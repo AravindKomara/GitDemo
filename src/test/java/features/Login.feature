@@ -1,31 +1,19 @@
-Feature: Application Login
-@WebTest
-  Scenario: Home page default login
-  Given User is on NetBanking landing page
-  When User login into the appilication with "Aravind" and "1234"
-  Then Home page is populated
-  And Cards are displayed "true"
- @MobileTest 
-  Scenario: Home page default login
-  Given User is on NetBanking landing page
-  When User login into the appilication with "Ajay" and "4321"
-  Then Home page is populated
-  And Cards are displayed "false"
- @MobileTest 
-  Scenario: Home page default signup
-  Given User is on NetBanking landing page
-  When User signup with following details
-  | Aravind | 1234 | aravind@gmail.com | 7416674136 | Hyderabad |
- @WebTest 
-  Scenario Outline: Home page default login
-  Given User is on NetBanking landing page
-  When User login in to the appilication with <Username> and <Password>
-  Then Home page is populated
-  And Cards are displayed "true"
+Feature: Loging into the portal
+
+@CartTest
+Scenario Outline: Login functionality
+   Given User is on landing page
+   When User clicked on login page
+   Then Message display as "Welcome, Please Sign In!"
+   When User enters username "<username>" and password "<password>"
+   When User click on login button
+   Then Validate user account ID
   
-  Examples:
-  |Username|Password|
-  |Aravind |1234|
-  |Ajay    |4321|
-  |Karthik |5231|
-  |Avinash |5678|
+Examples:
+    |username                 |password|
+    |testdemowebshop@gmail.com|Test123 |
+
+  
+
+  
+
